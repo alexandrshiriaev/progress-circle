@@ -1,0 +1,39 @@
+.toggle-button {
+  max-width: 50px;
+  max-height: 30px;
+
+  .toggle-button__input {
+    display: none;
+  }
+
+  .toggle-button__label {
+    width: 50px;
+    height: 30px;
+    display: inline-block;
+    background: var(--primary-background-color);
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .toggle-button__label:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    left: 2px;
+    top: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .toggle-button__input:checked + .toggle-button__label:before {
+    transform: translateX(20px);
+  }
+
+  .toggle-button__input:checked + .toggle-button__label {
+    background: var(--primary-color);
+  }
+}

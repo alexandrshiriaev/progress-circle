@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@500&display=swap");
+@import url("https://necolas.github.io/normalize.css/8.0.1/normalize.css");
+:root {
+  --primary-color: #005bff;
+  --primary-background-color: #eaf0f6;
+  --foreground-color: #001a34;
+}
+
+.progress-circle {
+  background: conic-gradient(var(--primary-color) 0deg, var(--primary-color) calc(var(--progress-value) * 1deg), var(--primary-background-color) calc(var(--progress-value) * 1deg) 360deg);
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  position: relative;
+}
+.progress-circle .progress-circle__inner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: white;
+  left: calc(50% - 50px);
+  top: calc(50% - 50px);
+}
+.progress-circle.animated {
+  background: conic-gradient(var(--primary-color) 0deg, var(--primary-color) 120deg, var(--primary-background-color) 120deg 360deg);
+  animation: spin 2s linear infinite;
+}
+.progress-circle.hidden {
+  opacity: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.toggle-button {
+  max-width: 50px;
+  max-height: 30px;
+}
+.toggle-button .toggle-button__input {
+  display: none;
+}
+.toggle-button .toggle-button__label {
+  width: 50px;
+  height: 30px;
+  display: inline-block;
+  background: var(--primary-background-color);
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.toggle-button .toggle-button__label:before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 2px;
+  top: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+.toggle-button .toggle-button__input:checked + .toggle-button__label:before {
+  transform: translateX(20px);
+}
+.toggle-button .toggle-button__input:checked + .toggle-button__label {
+  background: var(--primary-color);
+}
+
+.number-input {
+  width: 50px;
+  height: 30px;
+  border: 1px solid var(--foreground-color);
+  border-radius: 20px;
+  text-align: center;
+  font-size: 16px;
+  padding: 0;
+  padding-block: 0;
+  box-sizing: border-box;
+  -moz-appearance: none;
+}
+.number-input::-webkit-outer-spin-button, .number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+html {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.progress-container {
+  position: relative;
+  margin: 2rem auto;
+  padding: 5rem 5rem;
+  border: 2px dashed var(--primary-color);
+  max-width: 568px;
+  max-height: 320px;
+  display: inline-flex;
+  gap: 6rem;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 569px) {
+  .progress-container {
+    max-width: 320px;
+    max-height: 568px;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 320px) {
+  .progress-container {
+    max-width: 320px;
+    max-height: 568px;
+    padding: 5rem 1rem;
+  }
+}
+.progress-container .progress-container__title {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.progress-circle-container {
+  position: relative;
+  display: flex;
+  justify-content: end;
+}
+
+.progress-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.progress-controls .progress-controls__elem {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+@media screen and (max-width: 569px) {
+  .progress-controls {
+    margin-left: calc(50% - 58px);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

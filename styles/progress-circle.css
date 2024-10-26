@@ -1,0 +1,34 @@
+.progress-circle {
+  background: conic-gradient(var(--primary-color) 0deg, var(--primary-color) calc(var(--progress-value) * 1deg), var(--primary-background-color) calc(var(--progress-value) * 1deg) 360deg);
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  position: relative;
+}
+.progress-circle .progress-circle__inner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: white;
+  left: calc(50% - 50px);
+  top: calc(50% - 50px);
+}
+.progress-circle.animated {
+  background: conic-gradient(var(--primary-color) 0deg, var(--primary-color) 120deg, var(--primary-background-color) 120deg 360deg);
+  animation: spin 2s linear infinite;
+}
+.progress-circle.hidden {
+  opacity: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=progress-circle.css.map */
