@@ -13,6 +13,25 @@ function createProgressCircleNode() {
     return progressCircleNode;
 }
 
+function animate(startValue, targetValue, duration, callback) {
+
+    const startTime = performance.now();
+
+    const animationFn = (currentTime) => {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        const currentValue = startValue + (targetValue - startValue) * progress;
+
+        callback(currentValue);
+
+        if (progress < 1) {
+            requestAnimationFrame(animationFn);
+        }
+    }
+
+    requestAnimationFrame(animationFn);
+}
+
 class ProgressCircle {
     constructor(
         parentNode,
@@ -36,12 +55,12 @@ class ProgressCircle {
     }
 
     setValue(value) {
-        this.node.style.setProperty("--progress-value", value * 3.6);
-        this.value = value;
-        this.node.setAttribute("aria-valuemin", 0);
-        this.node.setAttribute("aria-valuemax", 100);
-        this.node.setAttribute("aria-valuenow", this.value);
         this.setAnimated(false);
+        animate(this.value, value, 200, (curValue) => {
+            this.node.style.setProperty("--progress-value", curValue * 3.6);
+        })
+        this.node.setAttribute("aria-valuenow", value);
+        this.value = value;
     }
 
     setAnimated(animated) {
