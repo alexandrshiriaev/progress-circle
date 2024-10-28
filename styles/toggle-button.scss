@@ -1,7 +1,15 @@
 .toggle-button {
   max-width: 50px;
   max-height: 30px;
-
+  background: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 25px;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
   .toggle-button__input {
     display: none;
   }
