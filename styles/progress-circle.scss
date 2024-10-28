@@ -20,12 +20,6 @@
   }
 
   &.animated {
-    background: conic-gradient(
-                    var(--primary-color) 0deg,
-                    var(--primary-color) 120deg,
-                    var(--primary-background-color) 120deg 360deg
-    );
-
     animation: spin 2s linear infinite;
   }
 

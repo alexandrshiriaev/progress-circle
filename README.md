@@ -11,7 +11,7 @@ const progressCircle = new ProgressCircle(progressCircleRoot, {
     hidden: false
 });
 
-progressCircle.setValue(100); // When this method is called method this.setAnimated(false) is called underhood
+progressCircle.setValue(100);
 
 progressCircle.setAnimated(true);
 

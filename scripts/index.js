@@ -55,7 +55,6 @@ class ProgressCircle {
     }
 
     setValue(value) {
-        this.setAnimated(false);
         animate(this.value, value, 200, (curValue) => {
             this.node.style.setProperty("--progress-value", curValue * 3.6);
         })
@@ -92,12 +91,11 @@ const progressCircle = new ProgressCircle(progressCircleRoot);
 
 progressValueInput.addEventListener("change", (ev) => {
     let value = parseInt(ev.target.value);
-    if (isNaN(value)) return;
+    if (isNaN(value)) return ev.target.value = progressCircle.value;
     if (value > 100) value = 100;
     if (value < 0) value = 0;
     ev.target.value = value;
     progressCircle.setValue(value);
-    progressAnimatedToggler.checked = false;
 });
 
 progressAnimatedToggler.addEventListener("change", (ev) => {
