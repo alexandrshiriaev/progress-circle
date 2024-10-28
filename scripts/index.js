@@ -6,6 +6,8 @@ const progressCircleRoot = document.getElementById("progress-circle-root");
 
 const progressCircle = new ProgressCircle(progressCircleRoot);
 
+// Validate value input
+
 progressValueInput.addEventListener("change", (ev) => {
     let value = parseInt(ev.target.value);
     if (isNaN(value)) return ev.target.value = progressCircle.value;
@@ -14,6 +16,22 @@ progressValueInput.addEventListener("change", (ev) => {
     ev.target.value = value;
     progressCircle.setValue(value);
 });
+
+// Set empty input if input value is zero on focus
+
+progressValueInput.addEventListener("focus", (ev) => {
+    if (ev.target.value === '0') {
+        ev.target.value = '';
+    }
+})
+
+// Set zero value to input if input value is empty on blur
+
+progressValueInput.addEventListener("blur", (ev) => {
+    if (ev.target.value === '') {
+        ev.target.value = '0';
+    }
+})
 
 progressAnimatedToggler.addEventListener("change", (ev) => {
     const isAnimated = ev.target.checked;
