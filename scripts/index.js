@@ -49,7 +49,9 @@ toggleButtons.forEach(btn => {
     const toggleButtonInput = btn.querySelector('.toggle-button__input');
     const toggleButtonLabel = btn.querySelector('.toggle-button__label');
     btn.addEventListener('click', (e) => {
-        toggleButtonInput.click();
+        if (e.target !== toggleButtonInput && e.target !== toggleButtonLabel) {
+            toggleButtonInput.click();
+        }
     })
 
     // Stop propagation for click event for toggle button to avoid re-event
