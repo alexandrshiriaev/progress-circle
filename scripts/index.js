@@ -6,8 +6,6 @@ const progressCircleRoot = document.getElementById("progress-circle-root");
 
 const progressCircle = new ProgressCircle(progressCircleRoot);
 
-// Validate value input
-
 progressValueInput.addEventListener("change", (ev) => {
     let value = parseInt(ev.target.value);
     if (isNaN(value)) return ev.target.value = progressCircle.value;
@@ -17,15 +15,11 @@ progressValueInput.addEventListener("change", (ev) => {
     progressCircle.setValue(value);
 });
 
-// Set empty input if input value is zero on focus
-
 progressValueInput.addEventListener("focus", (ev) => {
     if (ev.target.value === '0') {
         ev.target.value = '';
     }
 })
-
-// Set zero value to input if input value is empty on blur
 
 progressValueInput.addEventListener("blur", (ev) => {
     if (ev.target.value === '') {
@@ -43,7 +37,6 @@ progressHiddenToggler.addEventListener("change", (ev) => {
     progressCircle.setHidden(isHidden);
 });
 
-// Handling click/enter on toggle button for convenient tab navigation
 const toggleButtons = document.querySelectorAll(".toggle-button");
 toggleButtons.forEach(btn => {
     const toggleButtonInput = btn.querySelector('.toggle-button__input');
@@ -54,7 +47,6 @@ toggleButtons.forEach(btn => {
         }
     })
 
-    // Stop propagation for click event for toggle button to avoid re-event
     toggleButtonLabel.addEventListener('click', (e) => {
         e.stopPropagation();
     })
